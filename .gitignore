@@ -1,7 +1,9 @@
 node_modules/
 dist/
+.npmrc
 
 # OS
 .DS_Store
 # test output
 src/test/tmp/
+
