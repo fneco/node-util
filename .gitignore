@@ -1,0 +1,7 @@
+node_modules/
+dist/
+
+# OS
+.DS_Store
+# test output
+src/test/tmp/

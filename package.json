@@ -1,0 +1,46 @@
+{
+  "name": "@fneco/node-util",
+  "type": "module",
+  "description": "Node.js utility library by fneco.",
+  "version": "0.0.0",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fneco/node-util.git"
+  },
+  "author": "fneco",
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "util",
+    "utilities",
+    "utility",
+    "utils",
+    "typescript",
+    "esm"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "tsup": "^8.0.0",
+    "typescript": "^5.8.3",
+    "vitest": "3.1.2"
+  },
+  "dependencies": {
+    "remeda": "^2.21.3"
+  }
+}
