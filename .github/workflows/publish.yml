@@ -21,8 +21,14 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PACKAGES_PAT }}" > ~/.npmrc
           echo "@fneco:registry=https://npm.pkg.github.com" >> ~/.npmrc
 
+      - name: Set up pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Publish
-        run: npm publish
+        run: pnpm publish --no-git-checks
