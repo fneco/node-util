@@ -2,7 +2,7 @@ import { dirname, resolve } from "path";
 import { purry } from "remeda";
 import { fileURLToPath } from "url";
 
-export const _relToAbs = (relativePath: string, fileUrl: string): string => {
+const _relToAbs = (relativePath: string, fileUrl: string): string => {
   const __filename = fileURLToPath(fileUrl);
   const __dirname = dirname(__filename);
   return resolve(__dirname, relativePath);
