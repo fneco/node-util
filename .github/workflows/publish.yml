@@ -3,6 +3,9 @@ name: Publish to GitHub Packages
 on:
   workflow_dispatch:
     inputs: {}
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
