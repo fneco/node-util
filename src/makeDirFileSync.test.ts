@@ -21,7 +21,6 @@ describe("makeDirFileSync", () => {
   });
 
   it("creates a directory at the specified path and writes a file", () => {
-    console.log({ TEST_FILE });
     makeDirFileSync({ filePath: TEST_FILE, content: "hello" }, {});
     expect(existsSync(TEST_FILE)).toBe(true);
     expect(readFileSync(TEST_FILE, "utf8")).toBe("hello");
