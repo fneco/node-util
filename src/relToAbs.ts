@@ -17,6 +17,6 @@ const _relToAbs = (
 };
 
 export const relToAbs: {
-  (relativePath: string, fileUrl: string, paths?: string[]): string;
-  (fileUrl: string, paths?: string[]): (relativePath: string) => string;
+  (relativePath: string, fileUrl?: string, paths?: string[]): string;
+  (fileUrl?: string, paths?: string[]): (relativePath: string) => string;
 } = (...args: unknown[]) => purry(_relToAbs, args) as any;
