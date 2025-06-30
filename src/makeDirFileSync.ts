@@ -5,10 +5,12 @@ import { relToAbs } from "./relToAbs";
 
 const _makeDirFileSync = (
   data: { filePath: string; content?: string },
-  options: { metaUrl: string; encoding?: BufferEncoding }
+  options: { metaUrl?: string; encoding?: BufferEncoding }
 ) => {
   const { metaUrl, encoding = "utf8" } = options;
-  const absFilePath = relToAbs(data.filePath, metaUrl);
+  const absFilePath = metaUrl
+    ? relToAbs(data.filePath, metaUrl)
+    : data.filePath;
   const dir = dirname(absFilePath);
   mkdirSync(dir, { recursive: true });
   writeFileSync(absFilePath, data.content ?? "", encoding);
@@ -16,11 +18,11 @@ const _makeDirFileSync = (
 
 export function makeDirFileSync(
   data: { filePath: string; content?: string },
-  option: { metaUrl: string; encoding?: BufferEncoding }
+  option: { metaUrl?: string; encoding?: BufferEncoding }
 ): void;
 
 export function makeDirFileSync(option: {
-  metaUrl: string;
+  metaUrl?: string;
   encoding?: BufferEncoding;
 }): (data: { filePath: string; content?: string }) => void;
 
