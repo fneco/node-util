@@ -1,7 +1,5 @@
-import { execSync } from "child_process";
+import { exec } from "./exec";
 
 export const getGitCommitHash = () => {
-  return execSync("git rev-parse --short HEAD", {
-    encoding: "utf-8",
-  }).trim();
+  return exec("git rev-parse --show-toplevel");
 };
