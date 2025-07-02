@@ -32,13 +32,6 @@ describe("makeDirFileSync", () => {
     expect(readFileSync(TEST_FILE, "utf8")).toBe("");
   });
 
-  it("works as a curried function", () => {
-    const fn = makeDirFileSync({});
-    fn({ filePath: TEST_FILE, content: "curry" });
-    expect(existsSync(TEST_FILE)).toBe(true);
-    expect(readFileSync(TEST_FILE, "utf8")).toBe("curry");
-  });
-
   it("applies the encoding option", () => {
     makeDirFileSync(
       { filePath: TEST_FILE, content: "あいうえお" },

@@ -6,17 +6,20 @@ import { readConvertWrite } from "@/readConvertWrite";
 import { relToAbs } from "@/relToAbs";
 import * as fs from "fs/promises";
 import { afterAll, describe, expect, test } from "vitest";
+import { LastBoundFn } from "../type";
 
 const opt = { metaUrl: import.meta.url };
-const abs = relToAbs(opt.metaUrl);
+const abs: LastBoundFn<typeof relToAbs> = (x) => relToAbs(x, opt.metaUrl);
 
 describe("integration", async () => {
-  const make = makeDirFileSync(opt);
+  const make: LastBoundFn<typeof makeDirFileSync> = (x) =>
+    makeDirFileSync(x, opt);
   test("makeDirFileSync", () => {
     make({ filePath: `./tmp/foo.txt`, content: "foo" });
   });
 
-  const rcw = readConvertWrite(opt);
+  const rcw: LastBoundFn<typeof readConvertWrite> = (x) =>
+    readConvertWrite(x, opt);
   test("readConvertWrite", () => {
     rcw({
       converter: (x) => x,
@@ -30,7 +33,8 @@ describe("integration", async () => {
     });
   });
 
-  const isEqualContent = compare2Files(opt);
+  const isEqualContent: LastBoundFn<typeof compare2Files> = (x) =>
+    compare2Files(x, opt);
   test("compare2Files", async () => {
     expect(await isEqualContent(["./tmp/foo.txt", "./tmp/copy/foo.txt"])).toBe(
       true
@@ -40,13 +44,14 @@ describe("integration", async () => {
     );
   });
 
-  const move = moveFile(opt.metaUrl);
+  const move: LastBoundFn<typeof moveFile> = (x) => moveFile(x, opt.metaUrl);
   test("moveFile", () => {
     move({ from: `./tmp/copy/foo.txt`, to: "./tmp/foo2.txt" });
   });
 
   test("deleteFiles", async () => {
-    const del = deleteFiles(opt.metaUrl);
+    const del: LastBoundFn<typeof deleteFiles> = (x) =>
+      deleteFiles(x, opt.metaUrl);
     await del({ dirPath: "./tmp", shouldDelete: (x) => x.includes("foo") });
     await expect(fs.access(abs("./tmp/bar.txt"))).resolves.toBeUndefined();
     await expect(fs.access(abs("./tmp/foo.txt"))).rejects.toThrow();
