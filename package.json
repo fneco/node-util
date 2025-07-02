@@ -13,11 +13,15 @@
     },
     "./fn": {
       "import": "./dist/fn/index.js"
+    },
+    "./git": {
+      "import": "./dist/git/index.js"
     }
   },
   "files": [
     "dist",
-    "dist/fn"
+    "dist/fn",
+    "dist/git"
   ],
   "repository": {
     "type": "git",
