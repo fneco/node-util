@@ -10,10 +10,14 @@
   "exports": {
     ".": {
       "import": "./dist/index.js"
+    },
+    "./fn": {
+      "import": "./dist/fn/index.js"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/fn"
   ],
   "repository": {
     "type": "git",
