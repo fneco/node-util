@@ -1,5 +1,5 @@
 import { exec } from "./exec";
 
 export const getGitCommitHash = () => {
-  return exec("git rev-parse --show-toplevel");
+  return exec("git rev-parse --short HEAD");
 };
